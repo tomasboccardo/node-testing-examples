@@ -1,5 +1,5 @@
 var request = require('request');
 
-module.exports.getFromULR = function (url, callback) {
+module.exports.getFromURL = function (url, callback) {
   request(url, callback)
 };

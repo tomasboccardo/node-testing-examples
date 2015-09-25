@@ -1,4 +1,4 @@
-var getFromULR = require('../app/index').getFromULR;
+var getFromURL = require('../app/index').getFromURL;
 var should = require('chai').should();
 var nock = require('nock');
 
@@ -12,7 +12,7 @@ describe('Request test', function () {
   });
 
   it('should get message Hello World! when getting / from FDV Solutions site', function (done) {
-    getFromULR('http://fdvsolutions.com', function (error, response, body) {
+    getFromURL('http://fdvsolutions.com', function (error, response, body) {
       response.should.have.property('statusCode', 200);
       var body_object = JSON.parse(body);
       body_object.should.have.property('message', 'Hello World!');
