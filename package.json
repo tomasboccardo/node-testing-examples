@@ -1,0 +1,24 @@
+{
+  "name": "test-example",
+  "version": "1.0.0",
+  "description": "Node Unit testing example for FDV node.js brigade",
+  "main": "app.js",
+  "dependencies": {
+    "chai": "^3.3.0",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.1",
+    "grunt-mocha-test": "^0.12.7",
+    "grunt-script-link-tags": "^1.0.2",
+    "grunt-timer": "^0.6.0",
+    "jit-grunt": "^0.9.1",
+    "mocha": "^2.2.1",
+    "nock": "^2.13.0",
+    "request": "^2.64.0",
+    "rewire": "^2.3.4",
+    "sinon": "^1.17.0"
+  },
+  "scripts": {
+    "test": "node app",
+    "start": "node app.js"
+  }
+}
