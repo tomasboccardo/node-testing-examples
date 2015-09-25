@@ -75,7 +75,7 @@ example2/tests/app.test.js
 	  })
 	});
 
-Also, there are some cases that we will need to consume external services via HTTP requests. [nock](https://github.com/pgte/nock) is a great choise to achive that. It's really simple to use and provides a way to mock HTTP requests witout having to worry about the method being used. Heres an example on how its used
+Also, there are some cases that we will need to consume external services via HTTP requests. [nock](https://github.com/pgte/nock) is a great choise to achive that. It's really simple to use and provides a way to mock HTTP requests without having to worry about the method being used. Here's an example on how it's used
 
 example3/app/index.js
 
