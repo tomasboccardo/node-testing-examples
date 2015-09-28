@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Unit testing is a really important part of software development. It can make the difference between a good piece of software and a mediocre one. In this article we will discuss the What? Why? and How? of unit testing with Node.js
+Unit testing is a really important part of software development. It can make the difference between a good piece of software and a mediocre one. In this article we will discuss What? Why? and How? of unit testing with Node.js
 
 ## What?
 
@@ -12,7 +12,7 @@ Unit testing is a software development practice that helps the programmer gain c
 
 To begin with, unit testing gives confidence that each component that's being built is working according to the contract specified in the design. This is quite useful when making changes on existing code. Imagine yourself jumping in a new project and having to make changes to existing functionality without tests. There is no way to be sure that what you're changing won't introduce bugs. Unit testing helps a lot in those cases as you can change what's needed and run the tests to be sure that everything is working.
 
-Also, unit testing helps the programmer separate the functionality he's building into small modules with one single responsibility to make them easy to test. There is a development process that suggests writing the tests before writing the functionality. In that way, you are forced to design your components first, write tests for them and finally implement those components that make the tests pass. That process is called Test Driven Design(TDD) and is part of a bigger methodology called Extreme Programming(XP).
+Also, unit testing helps the programmer separate the functionality he's building into small modules with one single responsibility to make them easy to test. There is a development process that suggests writing the tests before writing the functionality. That way, you are forced to design your components first, write tests for them and finally implement those components that make the tests pass. That process is called Test Driven Design(TDD) and is part of a larger methodology called Extreme Programming(XP).
 
 Unit testing serves as documentation for your code as well. They show the way a component is used and what's the interface it exposes. Many programmers that want to use external components on their software just look at the tests to get examples on how the component is used.
 
@@ -108,7 +108,7 @@ example3/tests/app.test.js
       })
     });
  
-The last tool on our unit testing toolbox is [Rewire](https://github.com/jhnns/rewire/), a dependency injector. It's quite useful when you need to mock module dependencies.
+The last tool in our unit testing toolbox is [Rewire](https://github.com/jhnns/rewire/), a dependency injector. It's quite useful when you need to mock module dependencies.
 Let's look at the example:
   
 example4/app/index.js
