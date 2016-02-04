@@ -14,9 +14,7 @@ To begin with, unit testing gives confidence that each component that's being bu
 
 Also, unit testing helps the programmer separate the functionality he's building into small modules with one single responsibility to make them easy to test. There is a development process that suggests writing the tests before writing the functionality. That way, you are forced to design your components first, write tests for them and finally implement those components that make the tests pass. That process is called Test Driven Design(TDD) and is part of a larger methodology called Extreme Programming(XP).
 
-Unit testing serves as documentation for your code as well. They show the way a component is used and what's the interface it exposes. Many programmers that want to use external components on their software just look at the tests to get examples on how the component is used.
-
-There is a problem with unit testing as well. It does not test interaction between components. It just tests the component on isolation. To solve that, you can use an other kind of testing called Integration Testing, but that will be covered in another article.
+Unit testing serves as documentation for your code as well. They show the way a component is used and what's the interface it exposes. Many programmers that want to use external components on their software just look at the tests to get examples on how the components are used.
 
 ## How?
 
@@ -38,7 +36,7 @@ example1/tests/app.test.js
 
     var sum = require('../app/index').sum;
     var should = require('chai').should();
-    
+
     describe('Sum test', function () {
       it('should return 12 when adding 5 and 7', function () {
         var result = sum(5, 7);
@@ -63,7 +61,7 @@ example2/tests/app.test.js
     var sumAndCallback = require('../app/index').sumAndCallback;
     var assert = require('chai').assert;
     var sinon = require('sinon');
-    
+
     describe('Sum test', function () {
       it('should call the callback once with parameter 12 when adding 5 and 7', function () {
         var callback = sinon.spy();
@@ -73,22 +71,22 @@ example2/tests/app.test.js
       })
     });
 
-Also, there are some cases that we will need to consume external services via HTTP requests. [nock](https://github.com/pgte/nock) is a great choise to achive that. It's really simple to use and provides a way to mock HTTP requests without having to worry about the method being used. Here’s an example on how it’s used
+Also, there are some cases that we will need to consume external services via HTTP requests. [nock](https://github.com/pgte/nock) is a great choice to achieve that. It's really simple to use and provides a way to mock HTTP requests without having to worry about the method being used. Here’s an example on how it’s used
 
 example3/app/index.js
 
     var request = require('request');
-    
+
     module.exports.getFromURL = function (url, callback) {
       request(url, callback)
     };
 
 example3/tests/app.test.js
-    
+
     var getFromURL = require('../app/index').getFromURL;
     var should = require('chai').should();
     var nock = require('nock');
-    
+
     describe('Request test', function () {
       beforeEach(function() {
         nock('http://fdvsolutions.com')
@@ -97,7 +95,7 @@ example3/tests/app.test.js
             message: 'Hello World!'
           })
       });
-    
+
       it('should get message Hello World! when getting / from FDV Solutions site', function (done) {
         getFromURL('http://fdvsolutions.com', function (error, response, body) {
           response.should.have.property('statusCode', 200);
@@ -107,14 +105,14 @@ example3/tests/app.test.js
         })
       })
     });
- 
+
 The last tool in our unit testing toolbox is [Rewire](https://github.com/jhnns/rewire/), a dependency injector. It's quite useful when you need to mock module dependencies.
 Let's look at the example:
-  
+
 example4/app/index.js
 
     var fs = require('fs');
-    
+
     module.exports.checkFileExists = function (file, callback) {
       fs.exists(file, callback);
     };
@@ -125,7 +123,7 @@ example4/tests/app.test.js
     var app = rewire('../app/index');
     var assert = require('chai').assert;
     var sinon = require('sinon');
-    
+
     describe('File exists test', function () {
       beforeEach(function() {
         app.__set__(
@@ -138,7 +136,7 @@ example4/tests/app.test.js
           }
         )
       });
-    
+
       it('should call callback once with parameters null and true', function (done) {
         var callback = sinon.spy();
         app.checkFileExists('path', callback);
@@ -147,17 +145,9 @@ example4/tests/app.test.js
         done()
       })
     });
-  
+
 ## Conclusion
 
-We have presented the Node.js Unit Testing Toolbox. You can achieve everything you need using this five tools, but there are plenty of tools that can be use and get the same result. Feel free to research and choose the best for you.
+It's been presented the Node.js Unit Testing Toolbox. You can achieve everything you need using this five tools, but there are plenty of tools that can be use and get the same result. Feel free to research and choose the best for you.
 
-All the code that was displayed in this article was uploaded to [my repo](http://gitlab.fdvs.com.ar/tomas.boccardo/test-example), so you can take a look and experiment a bit with it.
-
-
-  
-
-
-
-
-
+All the code that was displayed in this article was uploaded to [my repo](https://github.com/tomasboccardo/node-testing-examples), so you can take a look and experiment a bit with it.
